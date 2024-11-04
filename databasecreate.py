@@ -92,12 +92,35 @@ economics_qa_pairs = [
     ("What is fiscal policy?", "The use of government spending and taxation to influence the economy."),
     ("What is a recession?", "A period of economic decline typically defined by a decrease in GDP for two consecutive quarters.")
 ]
+cursor.execute('''
+CREATE TABLE IF NOT EXISTS "Forensics_Questions" (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    question TEXT NOT NULL,
+    answer TEXT NOT NULL
+)
+''')
 
-# Insert questions and answers into the Economics_Questions table
+# List of questions and answers related to intro to computer forensics
+forensics_qa_pairs = [
+    ("What is computer forensics?", "The process of collecting, analyzing, and preserving digital evidence."),
+    ("What is a digital footprint?", "The trail of data you leave behind when using the internet."),
+    ("What are the key steps in the forensic process?", "Identification, preservation, analysis, and presentation of digital evidence."),
+    ("What is data recovery?", "The process of salvaging inaccessible or lost data from damaged storage devices."),
+    ("What tools are commonly used in computer forensics?", "Software like EnCase, FTK, and Autopsy."),
+    ("What is a hash value?", "A unique string generated from data used to verify the integrity of that data."),
+    ("What is the difference between active and passive data collection?", "Active data collection involves interacting with the system, while passive collection does not."),
+    ("What is chain of custody?", "A process that ensures the evidence is properly handled and preserved."),
+    ("What is metadata?", "Data that provides information about other data, such as the creation date of a file."),
+    ("Why is encryption important in forensics?", "Encryption can protect sensitive data, but may also pose challenges for accessing evidence.")
+]
+
+# Insert questions and answers into the Forensics_Questions table
 cursor.executemany('''
-INSERT INTO "Economics_Questions" (question, answer)
+INSERT INTO "Forensics_Questions" (question, answer)
 VALUES (?, ?)
-''', economics_qa_pairs)
+''', forensics_qa_pairs)
+# Insert questions and answers into the Economics_Questions table
+####''', economics_qa_pairs)
 # Insert questions and answers into the History_Questions table
 #cursor.executemany('''
 #INSERT INTO "History_Questions" (question, answer)
