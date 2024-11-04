@@ -50,12 +50,38 @@ finance_qa_pairs = [
     ("What is a financial statement?", "A formal record of the financial activities and position of a business, person, or entity."),
     ("What is cash flow?", "The total amount of money being transferred in and out of a business.")
 ]
+cursor.execute('''
+CREATE TABLE IF NOT EXISTS "History_Questions" (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    question TEXT NOT NULL,
+    answer TEXT NOT NULL
+)
+''')
 
+# List of questions and answers related to intro to modern U.S. history
+history_qa_pairs = [
+    ("What was the main cause of the Civil War?", "The primary cause was the dispute over slavery and states' rights."),
+    ("What event marked the beginning of the Great Depression?", "The stock market crash of 1929."),
+    ("What was the significance of the Brown v. Board of Education decision?", "It declared racial segregation in public schools unconstitutional."),
+    ("What did the Civil Rights Act of 1964 achieve?", "It prohibited discrimination based on race, color, religion, sex, or national origin."),
+    ("What was Watergate?", "A political scandal involving a break-in at the Democratic National Committee headquarters and the subsequent cover-up."),
+    ("Who was the first woman to fly solo across the Atlantic Ocean?", "Amelia Earhart."),
+    ("What was the purpose of the New Deal?", "To provide relief, recovery, and reform in response to the Great Depression."),
+    ("What did the Marshall Plan aim to do?", "To aid European nations in rebuilding their economies after World War II."),
+    ("What was the main outcome of the Vietnam War?", "The fall of Saigon and the unification of Vietnam under communist control."),
+    ("What is the significance of September 11, 2001, in U.S. history?", "It was the day of terrorist attacks that led to significant changes in U.S. domestic and foreign policy.")
+]
+
+# Insert questions and answers into the History_Questions table
+cursor.executemany('''
+INSERT INTO "History_Questions" (question, answer)
+VALUES (?, ?)
+''', history_qa_pairs)
 # Insert questions and answers into the Finance_Questions table
 #cursor.executemany('''
-INSERT INTO "Finance_Questions" (question, answer)
-VALUES (?, ?)
-''', finance_qa_pairs)
+#INSERT INTO "Finance_Questions" (question, answer)
+#VALUES (?, ?)
+#''', finance_qa_pairs)
 # Insert questions and answers into the table
 #cursor.executemany('''
 #INSERT INTO "DS-3850" (question, answer)
