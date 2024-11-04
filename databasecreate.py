@@ -52,15 +52,15 @@ finance_qa_pairs = [
 ]
 
 # Insert questions and answers into the Finance_Questions table
-cursor.executemany('''
+#cursor.executemany('''
 INSERT INTO "Finance_Questions" (question, answer)
 VALUES (?, ?)
 ''', finance_qa_pairs)
 # Insert questions and answers into the table
-cursor.executemany('''
-INSERT INTO "DS-3850" (question, answer)
-VALUES (?, ?)
-''', qa_pairs)
+#cursor.executemany('''
+#INSERT INTO "DS-3850" (question, answer)
+#VALUES (?, ?)
+#''', qa_pairs)
 
 # Commit the changes and close the connection
 conn.commit()
