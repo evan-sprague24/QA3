@@ -28,7 +28,34 @@ qa_pairs = [
     ("What is a 'list' in Python?", "A collection data type that holds an ordered sequence of items."),
     ("What does 'IDE' stand for and what is it?", "Integrated Development Environment, a software application that provides tools for coding, testing, and debugging.")
 ]
+# Create a table named Finance_Questions for intro to finance questions
+cursor.execute('''
+CREATE TABLE IF NOT EXISTS "Finance_Questions" (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    question TEXT NOT NULL,
+    answer TEXT NOT NULL
+)
+''')
 
+# List of questions and answers related to intro to finance
+finance_qa_pairs = [
+    ("What is the time value of money?", "The concept that money available today is worth more than the same amount in the future."),
+    ("What is a budget?", "A financial plan that outlines expected income and expenses over a specific period."),
+    ("What is the difference between assets and liabilities?", "Assets are what you own, while liabilities are what you owe."),
+    ("What is a stock?", "A share in the ownership of a company, representing a claim on part of the company’s assets and earnings."),
+    ("What is a bond?", "A fixed income instrument that represents a loan made by an investor to a borrower."),
+    ("What is interest?", "The cost of borrowing money, usually expressed as a percentage of the amount borrowed."),
+    ("What is diversification?", "The practice of spreading investments across different assets to reduce risk."),
+    ("What is an investment?", "An asset or item acquired with the goal of generating income or appreciation."),
+    ("What is a financial statement?", "A formal record of the financial activities and position of a business, person, or entity."),
+    ("What is cash flow?", "The total amount of money being transferred in and out of a business.")
+]
+
+# Insert questions and answers into the Finance_Questions table
+cursor.executemany('''
+INSERT INTO "Finance_Questions" (question, answer)
+VALUES (?, ?)
+''', finance_qa_pairs)
 # Insert questions and answers into the table
 cursor.executemany('''
 INSERT INTO "DS-3850" (question, answer)
