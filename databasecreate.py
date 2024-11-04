@@ -71,12 +71,38 @@ history_qa_pairs = [
     ("What was the main outcome of the Vietnam War?", "The fall of Saigon and the unification of Vietnam under communist control."),
     ("What is the significance of September 11, 2001, in U.S. history?", "It was the day of terrorist attacks that led to significant changes in U.S. domestic and foreign policy.")
 ]
+cursor.execute('''
+CREATE TABLE IF NOT EXISTS "Economics_Questions" (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    question TEXT NOT NULL,
+    answer TEXT NOT NULL
+)
+''')
 
-# Insert questions and answers into the History_Questions table
+# List of questions and answers related to intro to economics
+economics_qa_pairs = [
+    ("What is economics?", "The study of how individuals and societies allocate scarce resources."),
+    ("What is supply and demand?", "A model that explains the relationship between the quantity of a good that producers are willing to sell and the quantity that consumers are willing to buy."),
+    ("What is GDP?", "Gross Domestic Product, a measure of the economic performance of a country."),
+    ("What is inflation?", "The rate at which the general level of prices for goods and services is rising."),
+    ("What is a market economy?", "An economic system where supply and demand guide the production of goods and services."),
+    ("What is opportunity cost?", "The loss of potential gain from other alternatives when one alternative is chosen."),
+    ("What are the factors of production?", "The resources used to produce goods and services: land, labor, capital, and entrepreneurship."),
+    ("What is a monopoly?", "A market structure where a single seller dominates the market."),
+    ("What is fiscal policy?", "The use of government spending and taxation to influence the economy."),
+    ("What is a recession?", "A period of economic decline typically defined by a decrease in GDP for two consecutive quarters.")
+]
+
+# Insert questions and answers into the Economics_Questions table
 cursor.executemany('''
-INSERT INTO "History_Questions" (question, answer)
+INSERT INTO "Economics_Questions" (question, answer)
 VALUES (?, ?)
-''', history_qa_pairs)
+''', economics_qa_pairs)
+# Insert questions and answers into the History_Questions table
+#cursor.executemany('''
+#INSERT INTO "History_Questions" (question, answer)
+#VALUES (?, ?)
+#'', history_qa_pairs)
 # Insert questions and answers into the Finance_Questions table
 #cursor.executemany('''
 #INSERT INTO "Finance_Questions" (question, answer)
